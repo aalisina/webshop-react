@@ -1,5 +1,5 @@
 import React from "react";
-import "details.css";
+import "./details.css";
 
 function Details() {
   return (
