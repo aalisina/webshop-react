@@ -8,10 +8,11 @@ function Checkout() {
           <div className="py-5 text-center">
             <h2>Checkout</h2>
             <p className="lead">
-              Below is an example checkout form built entirely with Bootstrap’s form
-              controls. The order you place is will not be processed as a real order. 
-              Please do not use any real data. The web designer of this website will 
-              not be liable for any damages that may occur as a result of using real data.
+              Below is an example checkout form built entirely with Bootstrap’s
+              form controls. The order you place is will not be processed as a
+              real order. Please do not use any real data. The web designer of
+              this website will not be liable for any damages that may occur as
+              a result of using real data.
             </p>
           </div>
           <div className="row g-5">
