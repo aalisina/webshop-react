@@ -83,6 +83,34 @@
           { "sku": "17", "size": "XXL" }
         ],
         "description": "Look stylish in the gym while you're working out. These is the most comfortable shirt you'll ever wear. Different sizes available."
+      },
+      {
+        "id": 7,
+        "category": "shoes",
+        "image": "fitness7.jpg",
+        "name": "Shoes Extreme Fit",
+        "price": 135.95,
+        "skus": [
+          { "sku": "27", "size": 34 },
+          { "sku": "28", "size": 35 },
+          { "sku": "14", "size": 36 },
+          { "sku": "17", "size": 38 }
+        ],
+        "description": "Look stylish in the gym while you're working out. These are the most comfortable shoes you'll ever wear. Different sizes available."
+      },
+      {
+        "id": 8,
+        "category": "shirts",
+        "image": "fitness8.jpg",
+        "name": "Shoes Extreme Comfort",
+        "price": 155.95,
+        "skus": [
+            { "sku": "27", "size": 34 },
+            { "sku": "28", "size": 35 },
+            { "sku": "14", "size": 36 },
+            { "sku": "17", "size": 38 }
+        ],
+        "description": "Look stylish in the gym while you're working out. These are the most comfortable shoes you'll ever wear. Different sizes available."
       }
     ],
     "shippingAddress": [
