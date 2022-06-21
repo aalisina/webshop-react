@@ -7,7 +7,7 @@ function Navigation() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container px-4 px-lg-5">
           <a className="navbar-brand" href="#!">
-            Start Bootstrap
+           <strong>Health</strong> & Fitness
           </a>
           <button
             className="navbar-toggler"
@@ -81,9 +81,9 @@ function Navigation() {
       <header className="bg-dark py-5">
         <div className="container px-4 px-lg-5 my-5">
           <div className="text-center text-white">
-            <h1 className="display-4 fw-bolder">Shop in style</h1>
+            <h1 className="display-4 fw-bolder">Stay healthy and fit</h1>
             <p className="lead fw-normal text-white-50 mb-0">
-              With this shop hompeage template
+            A wide collection of exercise and fitness equipment just a few clicks away. Amazing discounts, prices, and customer reviews when it comes to fitness equipment
             </p>
           </div>
         </div>
