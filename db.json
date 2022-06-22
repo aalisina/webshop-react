@@ -63,10 +63,10 @@
         "name": "Shirt Extreme Fit",
         "price": 35.95,
         "skus": [
-          { "sku": "29", "size": "S" },
-          { "sku": "28", "size": "M" },
-          { "sku": "14", "size": "L" },
-          { "sku": "17", "size": "XL" }
+          { "sku": "29", "size": 30 },
+          { "sku": "28", "size": 32 },
+          { "sku": "14", "size": 34 },
+          { "sku": "17", "size": 36 }
         ],
         "description": "Look stylish in the gym while you're working out. Different sizes available."
       },
@@ -77,10 +77,10 @@
         "name": "Shirt Extreme Comfort",
         "price": 35.95,
         "skus": [
-          { "sku": "29", "size": "S" },
-          { "sku": "28", "size": "M" },
-          { "sku": "14", "size": "L" },
-          { "sku": "17", "size": "XXL" }
+          { "sku": "29", "size": 28 },
+          { "sku": "28", "size": 30 },
+          { "sku": "14", "size": 34 },
+          { "sku": "17", "size": 38 }
         ],
         "description": "Look stylish in the gym while you're working out. These is the most comfortable shirt you'll ever wear. Different sizes available."
       },
