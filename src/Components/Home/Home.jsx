@@ -68,10 +68,10 @@ const products = [
     name: "Shirt Extreme Fit",
     price: 35.95,
     skus: [
-      { sku: "29", size: "S" },
-      { sku: "28", size: "M" },
-      { sku: "14", size: "L" },
-      { sku: "17", size: "XL" },
+      { sku: "29", size: 30 },
+      { sku: "28", size: 32 },
+      { sku: "14", size: 34 },
+      { sku: "17", size: 36 },
     ],
     description:
       "Look stylish in the gym while you're working out. Different sizes available.",
@@ -83,10 +83,10 @@ const products = [
     name: "Shirt Extreme Comfort",
     price: 35.95,
     skus: [
-      { sku: "29", size: "S" },
-      { sku: "28", size: "M" },
-      { sku: "14", size: "L" },
-      { sku: "17", size: "XXL" },
+      { sku: "29", size: 28 },
+      { sku: "28", size: 30 },
+      { sku: "14", size: 34 },
+      { sku: "17", size: 38 },
     ],
     description:
       "Look stylish in the gym while you're working out. These is the most comfortable shirt you'll ever wear. Different sizes available.",
@@ -131,9 +131,28 @@ function Home() {
     ? products.filter((p) => p.category === category)
     : products;
 
+  const filteredProductsBySize = products.filter((prod) =>
+    prod.skus.find((s) => s.size === parseInt(size))
+  );
+
+  const filteredProductsBySizeAndCategory =
+    category && size
+      ? filteredProductsByCategory.filter((prod) =>
+          prod.skus.find((sku) => sku.size === parseInt(size))
+        )
+      : category
+      ? filteredProductsByCategory
+      : size
+      ? filteredProductsBySize
+      : products;
+
   const cats = products.map((p) => p.category);
   const catUniq = [...new Set(cats)];
-  
+
+  const sizesFiltered = filteredProductsBySizeAndCategory.map((prod) =>
+    prod.skus.map((s) => s.size)
+  );
+
   return (
     <>
       {/* Section*/}
@@ -148,7 +167,9 @@ function Home() {
             }}
           >
             <option value="">All categories</option>
-            {catUniq.map((cat)=> (<option value={cat}>{cat}</option>))}
+            {catUniq.map((cat) => (
+              <option value={cat}>{cat}</option>
+            ))}
           </select>
           <br />
           <br />
@@ -161,15 +182,18 @@ function Home() {
             }}
           >
             <option value="">All sizes</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
+            {sizesFiltered.map((prod) =>
+              prod.map((s) => <option value={s}>{s}</option>)
+            )}
+            {/* <option value="8">8</option>
+            <option value="9">9</option> */}
           </select>
         </div>
       </section>
       <section className="py-5">
         <div className="container px-4 px-lg-5 mt-5">
           <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            {products.map((product) => (
+            {filteredProductsBySizeAndCategory.map((product) => (
               <div className="col mb-5">
                 <div className="card h-100">
                   {/* Sale badge*/}
