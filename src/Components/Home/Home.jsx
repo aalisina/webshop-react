@@ -6,6 +6,7 @@ function Home() {
   const [size, setSize] = useState("");
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getProducts("products")
@@ -14,7 +15,8 @@ function Home() {
         console.log(prods);
       })
 
-      .catch((e) => setError(e));
+      .catch((e) => setError(e))
+      .finally(() => setLoading(false));
   }, []);
 
   const filteredProductsByCategory = category
