@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getProducts } from "../../Services/ProductService";
+import Spinner from "../../Components/Spinner/Spinner";
 
 function Home() {
   const [category, setCategory] = useState("");
@@ -46,6 +47,7 @@ function Home() {
   );
 
   if (error) throw error;
+  if (loading) return <Spinner />;
 
   return (
     <>
