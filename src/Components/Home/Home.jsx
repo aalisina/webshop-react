@@ -5,6 +5,7 @@ function Home() {
   const [category, setCategory] = useState("");
   const [size, setSize] = useState("");
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getProducts("products")
@@ -13,7 +14,7 @@ function Home() {
         console.log(prods);
       })
 
-      .catch((e) => console.log(e));
+      .catch((e) => setError(e));
   }, []);
 
   const filteredProductsByCategory = category
@@ -41,6 +42,8 @@ function Home() {
   const sizesFiltered = filteredProductsBySizeAndCategory.map((prod) =>
     prod.skus.map((s) => s.size)
   );
+
+  if (error) throw error;
 
   return (
     <>
