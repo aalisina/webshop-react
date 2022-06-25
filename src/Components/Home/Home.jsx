@@ -5,9 +5,6 @@ import Spinner from "../../Components/Spinner/Spinner";
 function Home() {
   const [category, setCategory] = useState("");
   const [size, setSize] = useState("");
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const init = async () => {
