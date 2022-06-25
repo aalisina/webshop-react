@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { getProducts } from "../../Services/ProductService";
+import React, { useState } from "react";
 import Spinner from "../../Components/Spinner/Spinner";
+import useFetch from "../../Services/useFetch";
 
 function Home() {
   const [category, setCategory] = useState("");
   const [size, setSize] = useState("");
+
+  const { data: products, loading, error } = useFetch("products");
 
   const filteredProductsByCategory = category
     ? products.filter((p) => p.category === category)
