@@ -9,7 +9,7 @@ function Home() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useEffect(async () => {
     getProducts("products")
       .then((prods) => {
         setProducts(prods);
