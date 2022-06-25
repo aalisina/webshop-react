@@ -15,7 +15,7 @@ function App() {
             path="/"
             element={<h3>Welcome to the homepage of Health & Fitness</h3>}
           />
-          <Route path="/products" element={<Home />} />
+          <Route path="/:datatype" element={<Home />} />
           <Route path="detail" element={<Details />} />
           <Route path="cart" element={<Checkout />} />
         </Routes>
