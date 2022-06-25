@@ -11,13 +11,14 @@ function Home() {
 
   useEffect(() => {
     const init = async () => {
-      getProducts("products")
-        .then((prods) => {
-          setProducts(prods);
-        })
-
-        .catch((e) => setError(e))
-        .finally(() => setLoading(false));
+      try {
+        const products = await getProducts("products");
+        setProducts(products);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
     };
     init();
   }, []);
