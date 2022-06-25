@@ -6,20 +6,6 @@ function Home() {
   const [category, setCategory] = useState("");
   const [size, setSize] = useState("");
 
-  useEffect(() => {
-    const init = async () => {
-      try {
-        const products = await getProducts("products");
-        setProducts(products);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    init();
-  }, []);
-
   const filteredProductsByCategory = category
     ? products.filter((p) => p.category === category)
     : products;
