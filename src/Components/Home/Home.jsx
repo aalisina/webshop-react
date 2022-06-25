@@ -9,15 +9,17 @@ function Home() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(async () => {
-    getProducts("products")
-      .then((prods) => {
-        setProducts(prods);
-        console.log(prods);
-      })
+  useEffect(() => {
+    const init = async () => {
+      getProducts("products")
+        .then((prods) => {
+          setProducts(prods);
+        })
 
-      .catch((e) => setError(e))
-      .finally(() => setLoading(false));
+        .catch((e) => setError(e))
+        .finally(() => setLoading(false));
+    };
+    init();
   }, []);
 
   const filteredProductsByCategory = category
