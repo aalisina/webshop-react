@@ -27,14 +27,14 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navigation />
+        <Navigation cart={cart} />
         <Routes>
           <Route
             path="/"
             element={<h3>Welcome to the homepage of Health & Fitness</h3>}
           />
           <Route path="/:datatype" element={<Home />} />
-          <Route path="/:datatype/:id" element={<Details />} />
+          <Route path="/:datatype/:id" element={<Details addToCart={addToCart} />} />
           <Route path="cart" element={<Checkout />} />
         </Routes>
         <Footer />
