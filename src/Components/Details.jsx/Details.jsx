@@ -1,7 +1,19 @@
 import React from "react";
 import "./details.css";
+import { useParams } from "react-router-dom";
+import useFetch from "../../Services/useFetch";
+import Spinner from "../Spinner/Spinner";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 function Details() {
+  const { datatype, id } = useParams();
+  const { data: product, loading, error } = useFetch(`${datatype}/${id}`);
+  
+
+  if (loading) return <Spinner />;
+  if (!product) return <PageNotFound />;
+  if (error) throw error;
+
   return (
     <>
       <main>
