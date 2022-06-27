@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Navigation from "./Components/Navigation/Navigation";
 import Home from "./Components/Home/Home";
 import Footer from "./Components/Footer/Footer";
@@ -6,6 +7,15 @@ import Checkout from "./Components/Checkout/Checkout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (id, sku) => {
+    setCart((curState)=> {
+        const itemAlreadyInCart = curState.find(item => item.sku === sku);
+        // if(itemAlreadyInCart) itemInCart.quantity++; Doesn't work, need to treat state as immutable
+
+    })
+  }
   return (
     <div className="App">
       <BrowserRouter>
