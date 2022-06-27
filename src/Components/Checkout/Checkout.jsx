@@ -1,6 +1,6 @@
 import React from "react";
 
-function Checkout() {
+function Checkout({cart, updateQuantity}) {
   return (
     <div className="container">
       <main>
