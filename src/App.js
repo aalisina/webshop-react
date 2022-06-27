@@ -10,12 +10,20 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const addToCart = (id, sku) => {
-    setCart((curState)=> {
-        const itemAlreadyInCart = curState.find(item => item.sku === sku);
-        // if(itemAlreadyInCart) itemInCart.quantity++; Doesn't work, need to treat state as immutable
-
-    })
-  }
+    setCart((curState) => {
+      const itemAlreadyInCart = curState.find((item) => item.sku === sku);
+      // if(itemAlreadyInCart) itemInCart.quantity++; Doesn't work, need to treat state as immutable
+      if (itemAlreadyInCart) {
+        // Return a new array with the matching item replaced
+        return curState.map((item) =>
+          item.sku === sku ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        // Return a new array with the new item attached to it
+        return [...curState, { id, sku, quantity: 1 }];
+      }
+    });
+  };
   return (
     <div className="App">
       <BrowserRouter>
