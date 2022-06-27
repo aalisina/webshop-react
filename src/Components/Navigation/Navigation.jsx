@@ -1,5 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
+const activeStyle = {
+  className: "nav-link active",
+};
 
 function Navigation() {
   return (
@@ -24,18 +28,23 @@ function Navigation() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
               <li className="nav-item">
-                <Link
-                  className="nav-link active"
+                <NavLink
+                  activeStyle={activeStyle}
+                  className="nav-link"
                   aria-current="page"
                   to="/products"
                 >
                   Products
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/cart">
+                <NavLink
+                  activeStyle={activeStyle}
+                  className="nav-link"
+                  to="/cart"
+                >
                   Cart
-                </Link>
+                </NavLink>
               </li>
             </ul>
             <form className="d-flex">
