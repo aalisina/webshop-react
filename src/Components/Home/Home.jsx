@@ -70,7 +70,11 @@ function Home() {
           >
             <option value="">All sizes</option>
             {sizesFiltered.map((prod) =>
-              prod.map((s) => <option key={s} value={s}>{s}</option>)
+              prod.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))
             )}
           </select>
         </div>
