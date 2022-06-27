@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./details.css";
 import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../../Services/useFetch";
@@ -8,6 +8,7 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 function Details() {
   const { datatype, id } = useParams();
   const { data: product, loading, error } = useFetch(`${datatype}/${id}`);
+  const [sku, setSku] = useState("");
   const navigate = useNavigate();
 
   if (loading) return <Spinner />;
@@ -42,10 +43,19 @@ function Details() {
                   Add to cart
                 </button>
                 <label htmlFor="size" className="fw-bold mt-2">
-                  Select size:
+                  What size?
                 </label>{" "}
-                <select id="size">
+                <select
+                  id="size"
+                  value={sku}
+                  onChange={(e) => setSku(e.target.value)}
+                >
                   <option value="">Select size: </option>
+                  {product.skus.map((s) => (
+                    <option key={s.sku} value={s.sku}>
+                      {s.size}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
