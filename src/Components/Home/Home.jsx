@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Spinner from "../../Components/Spinner/Spinner";
 import useFetch from "../../Services/useFetch";
+import { useParams } from "react-router-dom";
 
 function Home() {
   const [category, setCategory] = useState("");
   const [size, setSize] = useState("");
+  const { datatype } = useParams();
 
   const { data: products, loading, error } = useFetch("products");
 
