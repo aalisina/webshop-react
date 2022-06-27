@@ -41,12 +41,12 @@ function Details() {
                 >
                   Add to cart
                 </button>
-                <button
-                  type="button"
-                  className="btn btn-outline-secondary btn-lg px-4"
-                >
-                  Default
-                </button>
+                <label htmlFor="size" className="fw-bold mt-2">
+                  Select size:
+                </label>{" "}
+                <select id="size">
+                  <option value="">Select size: </option>
+                </select>
               </div>
             </div>
           </div>
