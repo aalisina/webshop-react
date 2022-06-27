@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Spinner from "../../Components/Spinner/Spinner";
 import useFetch from "../../Services/useFetch";
 import { useParams } from "react-router-dom";
+import PageNotFound from "../PageNotFound/PageNotFound";
 
 function Home() {
   const [category, setCategory] = useState("");
@@ -36,9 +37,9 @@ function Home() {
     prod.skus.map((s) => s.size)
   );
 
-  if (error) throw error;
   if (loading) return <Spinner />;
-
+  if (products.length === 0) return <PageNotFound />;
+  if (error) throw error;
   return (
     <>
       {/* Section*/}
@@ -69,10 +70,8 @@ function Home() {
           >
             <option value="">All sizes</option>
             {sizesFiltered.map((prod) =>
-              prod.map((s) => <option value={s}>{s}</option>)
+              prod.map((s) => <option key={s} value={s}>{s}</option>)
             )}
-            {/* <option value="8">8</option>
-            <option value="9">9</option> */}
           </select>
         </div>
       </section>
