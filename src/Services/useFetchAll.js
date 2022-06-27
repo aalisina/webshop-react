@@ -22,7 +22,7 @@ export default function useFetch(products) {
         setError(e);
       })
       .finally(() => setLoading(false));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { data, error, loading };
