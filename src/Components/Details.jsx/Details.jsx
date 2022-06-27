@@ -39,6 +39,7 @@ function Details() {
                   onClick={() => navigate("/cart")}
                   type="button"
                   className="btn btn-primary btn-lg px-4 me-md-2"
+                  disabled={!sku}
                 >
                   Add to cart
                 </button>
