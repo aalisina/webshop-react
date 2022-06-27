@@ -10,7 +10,7 @@ function Details() {
   const { data: product, loading, error } = useFetch(`${datatype}/${id}`);
 
   if (loading) return <Spinner />;
-  if (!product) return <PageNotFound />;
+  if (Object.keys(product).length === 0) return <PageNotFound />;
   if (error) throw error;
 
   return (
