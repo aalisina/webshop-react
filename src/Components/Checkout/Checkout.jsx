@@ -1,6 +1,62 @@
 import React from "react";
+import useFetchAll from "../../Services/useFetchAll";
+import Spinner from "../../Components/Spinner/Spinner";
+const products = [
+  {
+    id: 1,
+    category: "gloves",
+    image: "fitness1.jpg",
+    name: "Gloves X-tra",
+    price: 24.95,
+    skus: [
+      { sku: "1434", size: 7 },
+      { sku: "832", size: 8 },
+      { sku: "13122", size: 5 },
+      { sku: "9322", size: 6 },
+      { sku: "13123", size: 4 },
+      { sku: "33442", size: 9 },
+    ],
+    description:
+      "These gloves will significantly improve your grip so you can lift with ease. Different sizes available.",
+  },
+  {
+    id: 2,
+    category: "gloves",
+    image: "fitness2.jpg",
+    name: "Gloves Grip-R2",
+    price: 38.95,
+    skus: [
+      { sku: "1732343", size: 8 },
+      { sku: "291234", size: 9 },
+      { sku: "143443", size: 7 },
+      { sku: "13244225", size: 6 },
+    ],
+    description:
+      "These gloves will never fail. Ideal for heavy lifters and everyone trying to get to the next level. Different sizes available.",
+  },
+  {
+    id: 3,
+    category: "pants",
+    image: "fitness3.jpg",
+    name: "Pants Extreme Fit",
+    price: 95.95,
+    skus: [
+      { sku: "304456", size: 32 },
+      { sku: "285646778", size: 36 },
+      { sku: "14545667", size: 38 },
+    ],
+    description:
+      "Look stylish in the gym while you're working out. Different sizes available.",
+  },
+];
 
-function Checkout({cart, updateQuantity}) {
+function Checkout({ cart, updateQuantity }) {
+  // const prods = cart.map((i) => i.id);
+  // const { data: products, loading, error } = useFetchAll(prods);
+
+  // if (loading) return <Spinner />;
+  // if (error) throw error;
+
   return (
     <div className="container">
       <main>
@@ -14,58 +70,34 @@ function Checkout({cart, updateQuantity}) {
             result of using real data.
           </p>
         </div>
-        <div className="row g-5">
+        <div className="row g-6">
           <div className="col-md-5 col-lg-4 order-md-last">
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-primary">Your cart</span>
-              <span className="badge bg-primary rounded-pill">3</span>
+              <span className="badge bg-primary rounded-pill">
+                {products.length}
+              </span>
             </h4>
             <ul className="list-group mb-3">
-              <li className="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                  <h6 className="my-0">Product name</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$12</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                  <h6 className="my-0">Second product</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$8</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                  <h6 className="my-0">Third item</h6>
-                  <small className="text-muted">Brief description</small>
-                </div>
-                <span className="text-muted">$5</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between bg-light">
-                <div className="text-success">
-                  <h6 className="my-0">Promo code</h6>
-                  <small>EXAMPLECODE</small>
-                </div>
-                <span className="text-success">−$5</span>
-              </li>
+              {products.map((product) => (
+                <li
+                  key={product.id}
+                  className="list-group-item d-flex justify-content-between lh-sm"
+                >
+                  <div>
+                    <h6 className="my-0">{product.name}</h6>
+                    <small className="text-muted">
+                      {product.description.split(".")[0]}
+                    </small>
+                  </div>
+                  <span className="text-muted">${product.price}</span>
+                </li>
+              ))}
               <li className="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
-                <strong>$20</strong>
+                <strong>${products.reduce((total, curProd)=> total + parseInt(curProd.price), 0)}</strong>
               </li>
             </ul>
-            <form className="card p-2">
-              <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Promo code"
-                />
-                <button type="submit" className="btn btn-secondary">
-                  Redeem
-                </button>
-              </div>
-            </form>
           </div>
           <div className="col-md-7 col-lg-8">
             <h4 className="mb-3">Billing address</h4>
