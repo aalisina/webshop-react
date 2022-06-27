@@ -8,7 +8,7 @@ function Home() {
   const [size, setSize] = useState("");
   const { datatype } = useParams();
 
-  const { data: products, loading, error } = useFetch("products");
+  const { data: products, loading, error } = useFetch(datatype);
 
   const filteredProductsByCategory = category
     ? products.filter((p) => p.category === category)
