@@ -5,7 +5,7 @@ import useFetch from "../../Services/useFetch";
 import Spinner from "../Spinner/Spinner";
 import PageNotFound from "../PageNotFound/PageNotFound";
 
-function Details() {
+function Details(props) {
   const { datatype, id } = useParams();
   const { data: product, loading, error } = useFetch(`${datatype}/${id}`);
   const [sku, setSku] = useState("");
@@ -36,7 +36,10 @@ function Details() {
               <p className="lead"> ${product.price}</p>
               <div className="d-grid gap-2 d-md-flex justify-content-md-start">
                 <button
-                  onClick={() => navigate("/cart")}
+                  onClick={() => {
+                    props.addToCart(id, sku);
+                    navigate("/cart");
+                  }}
                   type="button"
                   className="btn btn-primary btn-lg px-4 me-md-2"
                   disabled={!sku}
