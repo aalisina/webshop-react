@@ -37,7 +37,7 @@ function Checkout({ cart, updateQuantity }) {
             Select a quantity:
           </label>{" "}
           <select id="quantity" value={quantity} onChange={(e)=> updateQuantity(sku, parseInt(e.target.value))}>
-            <option value="">Remove</option>
+            <option value="0">Remove</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -81,10 +81,10 @@ function Checkout({ cart, updateQuantity }) {
                 <span>Total (USD)</span>
                 <strong>
                   $
-                  {products.reduce(
+                  {cart.length > 0 ? products.reduce(
                     (total, curProd) => total + parseInt(curProd.price),
                     0
-                  )}
+                  ) : "0"}
                 </strong>
               </li>
             </ul>

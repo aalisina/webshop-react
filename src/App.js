@@ -27,6 +27,9 @@ function App() {
 
   const updateQuantity = (sku, quantity)=> {
     setCart((curItems)=> {
+      if (quantity === 0) {
+        return curItems.filter((item)=> item.sku !== sku)
+      }
       return curItems.map((item)=> item.sku === sku ? {...item, quantity} : item)
     })
   }
