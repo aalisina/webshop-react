@@ -24,6 +24,12 @@ function App() {
       }
     });
   };
+
+  const updateQuantity = (sku, quantity)=> {
+    setCart((curItems)=> {
+      return curItems.map((item)=> item.sku === sku ? {...item, quantity} : item)
+    })
+  }
   return (
     <div className="App">
       <BrowserRouter>
@@ -38,7 +44,7 @@ function App() {
             path="/:datatype/:id"
             element={<Details addToCart={addToCart} />}
           />
-          <Route path="cart" element={<Checkout cart={cart} />} />
+          <Route path="cart" element={<Checkout cart={cart} updateQuantity={updateQuantity} />} />
         </Routes>
         <Footer />
       </BrowserRouter>
