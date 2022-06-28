@@ -71,7 +71,7 @@ function Checkout({ cart, updateQuantity }) {
           </p>
         </div>
         <div className="row g-6">
-          <div className="col-md-5 col-lg-4 order-md-last">
+          <div className="col-md-8 col-lg-8 order-md-last">
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-primary">Your cart</span>
               <span className="badge bg-primary rounded-pill">
@@ -90,16 +90,19 @@ function Checkout({ cart, updateQuantity }) {
                       {product.description.split(".")[0]}
                     </small>
                   </div>
-                  <span className="text-muted">${product.price}</span>
+                  <strong><span className="text-primary">${product.price}</span></strong>
+                  <div><h5>Hhshs</h5></div>
+                  <div><h2>Hhshs</h2></div>
                 </li>
               ))}
               <li className="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
                 <strong>${products.reduce((total, curProd)=> total + parseInt(curProd.price), 0)}</strong>
               </li>
+              
             </ul>
           </div>
-          <div className="col-md-7 col-lg-8">
+          <div className="col-md-4 col-lg-4">
             <h4 className="mb-3">Billing address</h4>
             <form className="needs-validation" noValidate="">
               <div className="row g-3">
