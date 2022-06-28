@@ -1,61 +1,16 @@
 import React from "react";
 import useFetchAll from "../../Services/useFetchAll";
 import Spinner from "../../Components/Spinner/Spinner";
-const products = [
-  {
-    id: 1,
-    category: "gloves",
-    image: "fitness1.jpg",
-    name: "Gloves X-tra",
-    price: 24.95,
-    skus: [
-      { sku: "1434", size: 7 },
-      { sku: "832", size: 8 },
-      { sku: "13122", size: 5 },
-      { sku: "9322", size: 6 },
-      { sku: "13123", size: 4 },
-      { sku: "33442", size: 9 },
-    ],
-    description:
-      "These gloves will significantly improve your grip so you can lift with ease. Different sizes available.",
-  },
-  {
-    id: 2,
-    category: "gloves",
-    image: "fitness2.jpg",
-    name: "Gloves Grip-R2",
-    price: 38.95,
-    skus: [
-      { sku: "1732343", size: 8 },
-      { sku: "291234", size: 9 },
-      { sku: "143443", size: 7 },
-      { sku: "13244225", size: 6 },
-    ],
-    description:
-      "These gloves will never fail. Ideal for heavy lifters and everyone trying to get to the next level. Different sizes available.",
-  },
-  {
-    id: 3,
-    category: "pants",
-    image: "fitness3.jpg",
-    name: "Pants Extreme Fit",
-    price: 95.95,
-    skus: [
-      { sku: "304456", size: 32 },
-      { sku: "285646778", size: 36 },
-      { sku: "14545667", size: 38 },
-    ],
-    description:
-      "Look stylish in the gym while you're working out. Different sizes available.",
-  },
-];
+
 
 function Checkout({ cart, updateQuantity }) {
-  // const prods = cart.map((i) => i.id);
-  // const { data: products, loading, error } = useFetchAll(prods);
+  const prods = cart.map((i) => i.id);
+  const { data: products, loading, error } = useFetchAll(prods);
 
-  // if (loading) return <Spinner />;
-  // if (error) throw error;
+  console.log(products)
+
+  if (loading) return <Spinner />;
+  if (error) throw error;
 
   return (
     <div className="container">
