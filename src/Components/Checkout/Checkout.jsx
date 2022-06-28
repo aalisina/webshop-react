@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import useFetchAll from "../../Services/useFetchAll";
 import Spinner from "../../Components/Spinner/Spinner";
 
@@ -53,7 +53,8 @@ function Checkout({ cart, updateQuantity }) {
 
   if (loading) return <Spinner />;
   if (error) throw error;
-  const numItemsInCart = cart.reduce((total, curItem)=> total + curItem.quantity , 0)
+  
+  const numItemsInCart = useMemo(()=>cart.reduce((total, curItem)=> total + curItem.quantity , 0), [cart]) 
 
   return (
     <div className="container">
