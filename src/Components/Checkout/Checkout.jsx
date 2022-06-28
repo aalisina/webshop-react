@@ -85,21 +85,44 @@ function Checkout({ cart, updateQuantity }) {
                   className="list-group-item d-flex justify-content-between lh-sm"
                 >
                   <div>
-                    <h6 className="my-0">{product.name}</h6>
+                    <h6 className="my-0">
+                      {product.name}
+                      {"   "}
+                      <strong> ${product.price}</strong>
+                    </h6>
                     <small className="text-muted">
-                      {product.description.split(".")[0]}
+                      {product.description.split(".")[0] + "."}
                     </small>
                   </div>
-                  <strong><span className="text-primary">${product.price}</span></strong>
-                  <div><h5>Hhshs</h5></div>
-                  <div><h2>Hhshs</h2></div>
+                  <div>
+                    <p className="m-2">Size: Size</p>
+                  </div>
+                  <div>
+                    <label htmlFor="quantity" className="fw-bold mt-2">
+                      Quantity:
+                    </label>{" "}
+                    <select id="quantity">
+                      <option value="">Remove</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                    </select>
+                  </div>
                 </li>
               ))}
               <li className="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
-                <strong>${products.reduce((total, curProd)=> total + parseInt(curProd.price), 0)}</strong>
+                <strong>
+                  $
+                  {products.reduce(
+                    (total, curProd) => total + parseInt(curProd.price),
+                    0
+                  )}
+                </strong>
               </li>
-              
             </ul>
           </div>
           <div className="col-md-4 col-lg-4">
