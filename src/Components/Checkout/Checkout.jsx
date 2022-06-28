@@ -7,7 +7,49 @@ function Checkout({ cart, updateQuantity }) {
   const prods = cart.map((i) => i.id);
   const { data: products, loading, error } = useFetchAll(prods);
 
-  console.log(products)
+  const renderItem = (itemInCart) => {
+    const { id, sku, quantity} = itemInCart
+
+    const {price, name, skus, description} = products.find((p)=> p.id === parseInt(id))
+
+    const { size } = skus.find((s)=> s.sku === sku)
+
+    return (
+      <li
+        key={id}
+        className="list-group-item d-flex justify-content-between lh-sm"
+      >
+        <div>
+          <h6 className="my-0">
+            {name}
+            {"   "}
+            <strong> ${price}</strong>
+          </h6>
+          <small className="text-muted">
+            {description.split(".")[0] + "."}
+          </small>
+        </div>
+        <div>
+          <p className="m-2">Size: {size}</p>
+        </div>
+        <div>
+          <label htmlFor="quantity" className="fw-bold mt-2">
+            Quantity:
+          </label>{" "}
+          <select id="quantity">
+            <option value="">Remove</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+      </li>
+    )
+
+  } 
 
   if (loading) return <Spinner />;
   if (error) throw error;
@@ -30,44 +72,11 @@ function Checkout({ cart, updateQuantity }) {
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-primary">Your cart</span>
               <span className="badge bg-primary rounded-pill">
-                {products.length}
+                {cart.length}
               </span>
             </h4>
             <ul className="list-group mb-3">
-              {products.map((product) => (
-                <li
-                  key={product.id}
-                  className="list-group-item d-flex justify-content-between lh-sm"
-                >
-                  <div>
-                    <h6 className="my-0">
-                      {product.name}
-                      {"   "}
-                      <strong> ${product.price}</strong>
-                    </h6>
-                    <small className="text-muted">
-                      {product.description.split(".")[0] + "."}
-                    </small>
-                  </div>
-                  <div>
-                    <p className="m-2">Size: Size</p>
-                  </div>
-                  <div>
-                    <label htmlFor="quantity" className="fw-bold mt-2">
-                      Quantity:
-                    </label>{" "}
-                    <select id="quantity">
-                      <option value="">Remove</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                    </select>
-                  </div>
-                </li>
-              ))}
+              {cart.map(renderItem)}
               <li className="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
                 <strong>
