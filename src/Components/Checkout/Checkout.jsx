@@ -34,9 +34,9 @@ function Checkout({ cart, updateQuantity }) {
         </div>
         <div>
           <label htmlFor="quantity" className="fw-bold mt-2">
-            Quantity:
+            Select a quantity:
           </label>{" "}
-          <select id="quantity">
+          <select id="quantity" value={quantity} onChange={(e)=> updateQuantity(sku, parseInt(e.target.value))}>
             <option value="">Remove</option>
             <option value="1">1</option>
             <option value="2">2</option>
