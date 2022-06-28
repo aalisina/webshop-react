@@ -53,6 +53,7 @@ function Checkout({ cart, updateQuantity }) {
 
   if (loading) return <Spinner />;
   if (error) throw error;
+  const numItemsInCart = cart.reduce((total, curItem)=> total + curItem.quantity , 0)
 
   return (
     <div className="container">
@@ -72,7 +73,7 @@ function Checkout({ cart, updateQuantity }) {
             <h4 className="d-flex justify-content-between align-items-center mb-3">
               <span className="text-primary">Your cart</span>
               <span className="badge bg-primary rounded-pill">
-                {cart.length}
+                {numItemsInCart}
               </span>
             </h4>
             <ul className="list-group mb-3">
