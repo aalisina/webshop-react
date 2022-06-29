@@ -58,10 +58,7 @@ function Checkout({ cart, updateQuantity }) {
   if (loading) return <Spinner />;
   if (error) throw error;
 
-  const numItemsInCart = useMemo(
-    () => cart.reduce((total, curItem) => total + curItem.quantity, 0),
-    [cart]
-  );
+  const numItemsInCart = cart.reduce((total, curItem) => total + curItem.quantity, 0)
 
   return (
     <div className="container">
