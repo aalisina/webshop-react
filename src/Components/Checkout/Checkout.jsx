@@ -83,7 +83,8 @@ function Checkout({ cart, updateQuantity }) {
     // TODO: handle blur
   };
   const handleSubmit = async (e) => {
-    // todo: handle submit
+    e.preventDefault();
+    setFormStatus(FORMSTATUS.SUBMITTING);
   };
 
   if (loading) return <Spinner />;
@@ -212,7 +213,11 @@ function Checkout({ cart, updateQuantity }) {
               </div>
 
               <hr className="my-4" />
-              <button className="w-100 btn btn-primary btn-lg" type="submit">
+              <button
+                className="w-100 btn btn-primary btn-lg"
+                type="submit"
+                disabled={formStatus === FORMSTATUS.SUBMITTING}
+              >
                 Continue to checkout
               </button>
             </form>
