@@ -103,6 +103,9 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
   if (loading) return <Spinner />;
   if (error) throw error;
   if (saveError) throw saveError;
+  if (formStatus === FORMSTATUS.COMPLETED) {
+    return <div>Order completed. Thanks for shopping! :)</div>;
+  }
 
   const numItemsInCart = cart.reduce(
     (total, curItem) => total + curItem.quantity,
