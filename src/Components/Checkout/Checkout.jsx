@@ -64,7 +64,7 @@ function Checkout({ cart, updateQuantity }) {
   const handleChange = (e) => {
     // persist the event, otherwise it will be garbage collected
     // In react 17 or newer not needed anymore
-    e.persist(); 
+    // e.persist(); 
     setOrder((curOrder) => {
       return {
         ...curOrder,
