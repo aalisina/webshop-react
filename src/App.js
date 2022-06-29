@@ -44,6 +44,9 @@ function App() {
       );
     });
   };
+
+  const emptyCart = () => setCart([]);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -60,7 +63,13 @@ function App() {
           />
           <Route
             path="cart"
-            element={<Checkout cart={cart} updateQuantity={updateQuantity} />}
+            element={
+              <Checkout
+                cart={cart}
+                updateQuantity={updateQuantity}
+                emptyCart={emptyCart}
+              />
+            }
           />
         </Routes>
         <Footer />
