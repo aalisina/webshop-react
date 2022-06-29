@@ -1,125 +1,242 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "category": "gloves",
-        "image": "fitness1.jpg",
-        "name": "Gloves X-tra",
-        "price": 24.95,
-        "skus": [
-          { "sku": "1434", "size": 7 },
-          { "sku": "832", "size": 8 },
-          { "sku": "13122", "size": 5 },
-          { "sku": "9322", "size": 6 },
-          { "sku": "13123", "size": 4 },
-          { "sku": "33442", "size": 9 }
-        ],
-        "description": "These gloves will significantly improve your grip so you can lift with ease. Different sizes available."
-      },
-      {
-        "id": 2,
-        "category": "gloves",
-        "image": "fitness2.jpg",
-        "name": "Gloves Grip-R2",
-        "price": 38.95,
-        "skus": [
-          { "sku": "1732343", "size": 8 },
-          { "sku": "291234", "size": 9 },
-          { "sku": "143443", "size": 7 },
-          { "sku": "13244225", "size": 6 }
-        ],
-        "description": "These gloves will never fail. Ideal for heavy lifters and everyone trying to get to the next level. Different sizes available."
-      },
-      {
-        "id": 3,
-        "category": "pants",
-        "image": "fitness3.jpg",
-        "name": "Pants Extreme Fit",
-        "price": 95.95,
-        "skus": [
-          { "sku": "304456", "size": 32 },
-          { "sku": "285646778", "size": 36 },
-          { "sku": "14545667", "size": 38 }
-        ],
-        "description": "Look stylish in the gym while you're working out. Different sizes available."
-      },
-      {
-        "id": 4,
-        "category": "pants",
-        "image": "fitness4.jpg",
-        "name": "Pants Extreme Comfort",
-        "price": 115.95,
-        "skus": [
-          { "sku": "14245789", "size": 32 },
-          { "sku": "2846785", "size": 36 },
-          { "sku": "1435677433567", "size": 42 }
-        ],
-        "description": "Look stylish in the gym while you're working out. These are the most comfortable pants you'll ever wear. Different sizes available."
-      },
-      {
-        "id": 5,
-        "category": "shirts",
-        "image": "fitness5.jpg",
-        "name": "Shirt Extreme Fit",
-        "price": 35.95,
-        "skus": [
-          { "sku": "2345679", "size": 30 },
-          { "sku": "28576774", "size": 32 },
-          { "sku": "14335656", "size": 34 },
-          { "sku": "17556767", "size": 36 }
-        ],
-        "description": "Look stylish in the gym while you're working out. Different sizes available."
-      },
-      {
-        "id": 6,
-        "category": "shirts",
-        "image": "fitness6.jpg",
-        "name": "Shirt Extreme Comfort",
-        "price": 35.95,
-        "skus": [
-          { "sku": "29334567334", "size": 28 },
-          { "sku": "285676774466", "size": 30 },
-          { "sku": "14879007755", "size": 34 },
-          { "sku": "173356788", "size": 38 }
-        ],
-        "description": "Look stylish in the gym while you're working out. These is the most comfortable shirt you'll ever wear. Different sizes available."
-      },
-      {
-        "id": 7,
-        "category": "shoes",
-        "image": "fitness7.jpg",
-        "name": "Shoes Extreme Fit",
-        "price": 135.95,
-        "skus": [
-          { "sku": "2736785433", "size": 34 },
-          { "sku": "28355674290", "size": 35 },
-          { "sku": "14335687446", "size": 36 },
-          { "sku": "1735678987332", "size": 38 }
-        ],
-        "description": "Look stylish in the gym while you're working out. These are the most comfortable shoes you'll ever wear. Different sizes available."
-      },
-      {
-        "id": 8,
-        "category": "shoes",
-        "image": "fitness8.jpg",
-        "name": "Shoes Extreme Comfort",
-        "price": 155.95,
-        "skus": [
-            { "sku": "2733567", "size": 34 },
-            { "sku": "2844673", "size": 35 },
-            { "sku": "1433567887", "size": 36 },
-            { "sku": "1357683356733", "size": 38 }
-        ],
-        "description": "Look stylish in the gym while you're working out. These are the most comfortable shoes you'll ever wear. Different sizes available."
-      }
-    ],
-    "shippingDetails": [
-      {
-        "id": 1,
-        "address": "",
-        "country": "",
-        "firstName": "",
-        "lastName": ""
-      }
-    ]
-  }
+  "products": [
+    {
+      "id": 1,
+      "category": "gloves",
+      "image": "fitness1.jpg",
+      "name": "Gloves X-tra",
+      "price": 24.95,
+      "skus": [
+        {
+          "sku": "1434",
+          "size": 7
+        },
+        {
+          "sku": "832",
+          "size": 8
+        },
+        {
+          "sku": "13122",
+          "size": 5
+        },
+        {
+          "sku": "9322",
+          "size": 6
+        },
+        {
+          "sku": "13123",
+          "size": 4
+        },
+        {
+          "sku": "33442",
+          "size": 9
+        }
+      ],
+      "description": "These gloves will significantly improve your grip so you can lift with ease. Different sizes available."
+    },
+    {
+      "id": 2,
+      "category": "gloves",
+      "image": "fitness2.jpg",
+      "name": "Gloves Grip-R2",
+      "price": 38.95,
+      "skus": [
+        {
+          "sku": "1732343",
+          "size": 8
+        },
+        {
+          "sku": "291234",
+          "size": 9
+        },
+        {
+          "sku": "143443",
+          "size": 7
+        },
+        {
+          "sku": "13244225",
+          "size": 6
+        }
+      ],
+      "description": "These gloves will never fail. Ideal for heavy lifters and everyone trying to get to the next level. Different sizes available."
+    },
+    {
+      "id": 3,
+      "category": "pants",
+      "image": "fitness3.jpg",
+      "name": "Pants Extreme Fit",
+      "price": 95.95,
+      "skus": [
+        {
+          "sku": "304456",
+          "size": 32
+        },
+        {
+          "sku": "285646778",
+          "size": 36
+        },
+        {
+          "sku": "14545667",
+          "size": 38
+        }
+      ],
+      "description": "Look stylish in the gym while you're working out. Different sizes available."
+    },
+    {
+      "id": 4,
+      "category": "pants",
+      "image": "fitness4.jpg",
+      "name": "Pants Extreme Comfort",
+      "price": 115.95,
+      "skus": [
+        {
+          "sku": "14245789",
+          "size": 32
+        },
+        {
+          "sku": "2846785",
+          "size": 36
+        },
+        {
+          "sku": "1435677433567",
+          "size": 42
+        }
+      ],
+      "description": "Look stylish in the gym while you're working out. These are the most comfortable pants you'll ever wear. Different sizes available."
+    },
+    {
+      "id": 5,
+      "category": "shirts",
+      "image": "fitness5.jpg",
+      "name": "Shirt Extreme Fit",
+      "price": 35.95,
+      "skus": [
+        {
+          "sku": "2345679",
+          "size": 30
+        },
+        {
+          "sku": "28576774",
+          "size": 32
+        },
+        {
+          "sku": "14335656",
+          "size": 34
+        },
+        {
+          "sku": "17556767",
+          "size": 36
+        }
+      ],
+      "description": "Look stylish in the gym while you're working out. Different sizes available."
+    },
+    {
+      "id": 6,
+      "category": "shirts",
+      "image": "fitness6.jpg",
+      "name": "Shirt Extreme Comfort",
+      "price": 35.95,
+      "skus": [
+        {
+          "sku": "29334567334",
+          "size": 28
+        },
+        {
+          "sku": "285676774466",
+          "size": 30
+        },
+        {
+          "sku": "14879007755",
+          "size": 34
+        },
+        {
+          "sku": "173356788",
+          "size": 38
+        }
+      ],
+      "description": "Look stylish in the gym while you're working out. These is the most comfortable shirt you'll ever wear. Different sizes available."
+    },
+    {
+      "id": 7,
+      "category": "shoes",
+      "image": "fitness7.jpg",
+      "name": "Shoes Extreme Fit",
+      "price": 135.95,
+      "skus": [
+        {
+          "sku": "2736785433",
+          "size": 34
+        },
+        {
+          "sku": "28355674290",
+          "size": 35
+        },
+        {
+          "sku": "14335687446",
+          "size": 36
+        },
+        {
+          "sku": "1735678987332",
+          "size": 38
+        }
+      ],
+      "description": "Look stylish in the gym while you're working out. These are the most comfortable shoes you'll ever wear. Different sizes available."
+    },
+    {
+      "id": 8,
+      "category": "shoes",
+      "image": "fitness8.jpg",
+      "name": "Shoes Extreme Comfort",
+      "price": 155.95,
+      "skus": [
+        {
+          "sku": "2733567",
+          "size": 34
+        },
+        {
+          "sku": "2844673",
+          "size": 35
+        },
+        {
+          "sku": "1433567887",
+          "size": 36
+        },
+        {
+          "sku": "1357683356733",
+          "size": 38
+        }
+      ],
+      "description": "Look stylish in the gym while you're working out. These are the most comfortable shoes you'll ever wear. Different sizes available."
+    }
+  ],
+  "shippingDetails": [
+    {
+      "id": 1,
+      "address": "",
+      "country": "",
+      "firstName": "",
+      "lastName": ""
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "address": "",
+      "country": "",
+      "id": 2
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "address": "",
+      "country": "",
+      "id": 3
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "address": "",
+      "country": "",
+      "id": 4
+    }
+  ]
+}
