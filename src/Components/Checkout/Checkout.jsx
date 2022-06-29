@@ -93,6 +93,8 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
     try {
       const response = await saveShippingDetails(order);
       console.log(response);
+      emptyCart();
+      setFormStatus(FORMSTATUS.COMPLETED);
     } catch (e) {
       setSaveError(e);
     }
