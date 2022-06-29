@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import useFetchAll from "../../Services/useFetchAll";
 import Spinner from "../../Components/Spinner/Spinner";
+const emptyOrder = {
+  firstName: "",
+  lastName: "",
+  address: "",
+  country: "",
+};
 
 function Checkout({ cart, updateQuantity }) {
   const prods = cart.map((i) => i.id);
   const { data: products, loading, error } = useFetchAll(prods);
+  const [order, setOrder] = useState(emptyOrder);
 
   const renderItem = (itemInCart) => {
     const { id, sku, quantity } = itemInCart;
@@ -63,12 +70,6 @@ function Checkout({ cart, updateQuantity }) {
   };
   const handleSubmit = async (e) => {
     // todo: handle submit
-  };
-  const order = {
-    firstName: "",
-    lastName: "",
-    address: "",
-    country: "",
   };
 
   if (loading) return <Spinner />;
