@@ -15,7 +15,7 @@ const FORMSTATUS = {
   SUBMITTING: "SUBMITTING",
   COMPLETED: "COMPLETED",
 };
-function Checkout({ cart, updateQuantity }) {
+function Checkout({ cart, updateQuantity, emptyCart }) {
   const prods = cart.map((i) => i.id);
   const { data: products, loading, error } = useFetchAll(prods);
   const [order, setOrder] = useState(emptyOrder);
