@@ -7,20 +7,16 @@ import Checkout from "./Components/Checkout/Checkout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [cart, setCart] = useState(()=> {
+  const [cart, setCart] = useState(() => {
     try {
-     
-     return JSON.parse(localStorage.getItem("cart")) ?? []
-      
+      return JSON.parse(localStorage.getItem("cart")) ?? [];
     } catch (error) {
-      console.error("The cart could not be parsed to JSON.")
+      console.error("The cart could not be parsed to JSON.");
       return [];
     }
-    
-  
-  } );
-  
-  useEffect(()=> localStorage.setItem("cart", JSON.stringify(cart)), [cart])
+  });
+
+  useEffect(() => localStorage.setItem("cart", JSON.stringify(cart)), [cart]);
 
   const addToCart = (id, sku) => {
     setCart((curState) => {
@@ -38,14 +34,16 @@ function App() {
     });
   };
 
-  const updateQuantity = (sku, quantity)=> {
-    setCart((curItems)=> {
+  const updateQuantity = (sku, quantity) => {
+    setCart((curItems) => {
       if (quantity === 0) {
-        return curItems.filter((item)=> item.sku !== sku)
+        return curItems.filter((item) => item.sku !== sku);
       }
-      return curItems.map((item)=> item.sku === sku ? {...item, quantity} : item)
-    })
-  }
+      return curItems.map((item) =>
+        item.sku === sku ? { ...item, quantity } : item
+      );
+    });
+  };
   return (
     <div className="App">
       <BrowserRouter>
@@ -60,7 +58,10 @@ function App() {
             path="/:datatype/:id"
             element={<Details addToCart={addToCart} />}
           />
-          <Route path="cart" element={<Checkout cart={cart} updateQuantity={updateQuantity} />} />
+          <Route
+            path="cart"
+            element={<Checkout cart={cart} updateQuantity={updateQuantity} />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

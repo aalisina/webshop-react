@@ -2,17 +2,18 @@ import React, { useMemo } from "react";
 import useFetchAll from "../../Services/useFetchAll";
 import Spinner from "../../Components/Spinner/Spinner";
 
-
 function Checkout({ cart, updateQuantity }) {
   const prods = cart.map((i) => i.id);
   const { data: products, loading, error } = useFetchAll(prods);
 
   const renderItem = (itemInCart) => {
-    const { id, sku, quantity} = itemInCart
+    const { id, sku, quantity } = itemInCart;
 
-    const {price, name, skus, description} = products.find((p)=> p.id === parseInt(id))
+    const { price, name, skus, description } = products.find(
+      (p) => p.id === parseInt(id)
+    );
 
-    const { size } = skus.find((s)=> s.sku === sku)
+    const { size } = skus.find((s) => s.sku === sku);
 
     return (
       <li
@@ -36,7 +37,11 @@ function Checkout({ cart, updateQuantity }) {
           <label htmlFor="quantity" className="fw-bold mt-2">
             Select a quantity:
           </label>{" "}
-          <select id="quantity" value={quantity} onChange={(e)=> updateQuantity(sku, parseInt(e.target.value))}>
+          <select
+            id="quantity"
+            value={quantity}
+            onChange={(e) => updateQuantity(sku, parseInt(e.target.value))}
+          >
             <option value="0">Remove</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -47,14 +52,16 @@ function Checkout({ cart, updateQuantity }) {
           </select>
         </div>
       </li>
-    )
-
-  } 
+    );
+  };
 
   if (loading) return <Spinner />;
   if (error) throw error;
-  
-  const numItemsInCart = useMemo(()=>cart.reduce((total, curItem)=> total + curItem.quantity , 0), [cart]) 
+
+  const numItemsInCart = useMemo(
+    () => cart.reduce((total, curItem) => total + curItem.quantity, 0),
+    [cart]
+  );
 
   return (
     <div className="container">
@@ -83,10 +90,12 @@ function Checkout({ cart, updateQuantity }) {
                 <span>Total (USD)</span>
                 <strong>
                   $
-                  {cart.length > 0 ? products.reduce(
-                    (total, curProd) => total + parseInt(curProd.price),
-                    0
-                  ) : "0"}
+                  {cart.length > 0
+                    ? products.reduce(
+                        (total, curProd) => total + parseInt(curProd.price),
+                        0
+                      )
+                    : "0"}
                 </strong>
               </li>
             </ul>

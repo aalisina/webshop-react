@@ -7,10 +7,12 @@ export default function useFetchAll(urls) {
 
   useEffect(() => {
     const promises = urls.map((url) =>
-      fetch(process.env.REACT_APP_API_BASE_URL + "products/" + url).then((response) => {
-        if (response.ok) return response.json();
-        throw response;
-      })
+      fetch(process.env.REACT_APP_API_BASE_URL + "products/" + url).then(
+        (response) => {
+          if (response.ok) return response.json();
+          throw response;
+        }
+      )
     );
 
     Promise.all(promises)
