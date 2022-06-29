@@ -62,7 +62,12 @@ function Checkout({ cart, updateQuantity }) {
     );
   };
   const handleChange = (e) => {
-    //TODO: handle change
+    setOrder((curOrder) => {
+      return {
+        ...curOrder,
+        [e.target.id]: e.target.value,
+      };
+    });
   };
 
   const handleBlur = (e) => {
