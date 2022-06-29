@@ -62,6 +62,7 @@ function Checkout({ cart, updateQuantity }) {
     );
   };
   const handleChange = (e) => {
+    e.persist(); // persist the event, otherwise it will be garbage collected
     setOrder((curOrder) => {
       return {
         ...curOrder,
