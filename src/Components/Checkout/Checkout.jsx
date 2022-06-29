@@ -7,11 +7,17 @@ const emptyOrder = {
   address: "",
   country: "",
 };
-
+const FORMSTATUS = {
+  IDLE: "IDLE",
+  SUBMITTED: "SUBMITTED",
+  SUBMITTING: "SUBMITTING",
+  COMPLETED: "COMPLETED",
+};
 function Checkout({ cart, updateQuantity }) {
   const prods = cart.map((i) => i.id);
   const { data: products, loading, error } = useFetchAll(prods);
   const [order, setOrder] = useState(emptyOrder);
+  const [formStatus, setFormStatus] = useState(FORMSTATUS.IDLE);
 
   const renderItem = (itemInCart) => {
     const { id, sku, quantity } = itemInCart;
@@ -64,7 +70,7 @@ function Checkout({ cart, updateQuantity }) {
   const handleChange = (e) => {
     // persist the event, otherwise it will be garbage collected
     // In react 17 or newer not needed anymore
-    // e.persist(); 
+    // e.persist();
     setOrder((curOrder) => {
       return {
         ...curOrder,
