@@ -21,6 +21,9 @@ function Checkout({ cart, updateQuantity }) {
   const [order, setOrder] = useState(emptyOrder);
   const [formStatus, setFormStatus] = useState(FORMSTATUS.IDLE);
 
+  // state to handle errors for the saveShippingDetails API call
+  const [saveError, setSaveError] = useState(null);
+
   const renderItem = (itemInCart) => {
     const { id, sku, quantity } = itemInCart;
 
@@ -87,10 +90,17 @@ function Checkout({ cart, updateQuantity }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus(FORMSTATUS.SUBMITTING);
+    try {
+      const response = await saveShippingDetails(order);
+      console.log(response);
+    } catch (e) {
+      setSaveError(e);
+    }
   };
 
   if (loading) return <Spinner />;
   if (error) throw error;
+  if (saveError) throw saveError;
 
   const numItemsInCart = cart.reduce(
     (total, curItem) => total + curItem.quantity,
