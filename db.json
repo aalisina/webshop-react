@@ -113,11 +113,13 @@
         "description": "Look stylish in the gym while you're working out. These are the most comfortable shoes you'll ever wear. Different sizes available."
       }
     ],
-    "shippingAddress": [
+    "shippingDetails": [
       {
         "id": 1,
-        "city": "",
-        "country": ""
+        "address": "",
+        "country": "",
+        "firstName": "",
+        "lastName": ""
       }
     ]
   }
