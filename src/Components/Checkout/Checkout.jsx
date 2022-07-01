@@ -120,6 +120,8 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
       } catch (e) {
         setSaveError(e);
       }
+    } else {
+      setFormStatus(FORMSTATUS.SUBMITTED);
     }
   };
 
@@ -180,6 +182,20 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
               onSubmit={handleSubmit}
             >
               <div className="row g-3">
+                {/* Show error summary here */}
+                {!isValid && formStatus.SUBMITTED && (
+                  <div className="col-sm-6">
+                    <div role="alert">
+                      <p>Please fix the following errors</p>
+                      <ul>
+                        {Object.keys(orderErrors).map((key) => {
+                          return <li key={key}>{orderErrors[key]}</li>;
+                        })}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+
                 <div className="col-sm-6">
                   <label htmlFor="firstName" className="form-label">
                     First name
