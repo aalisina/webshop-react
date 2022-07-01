@@ -218,8 +218,13 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="invalid-feedback">
-                  Please enter your first name.
+
+                <div>
+                  <p role="alert" style={{ color: "red" }}>
+                    {(touched.firstName ||
+                      formStatus === FORMSTATUS.SUBMITTED) &&
+                      orderErrors.firstName}
+                  </p>
                 </div>
                 <div className="col-sm-6">
                   <label htmlFor="lastName" className="form-label">
