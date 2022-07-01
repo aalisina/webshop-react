@@ -24,6 +24,27 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
   // state to handle errors for the saveShippingDetails API call
   const [saveError, setSaveError] = useState(null);
 
+  const getOrderErrors = (order) => {
+    const result = {};
+    if (!order.firstName) {
+      result.firstName = "First name is required";
+    }
+    if (!order.lastName) {
+      result.lastName = "Last name is required";
+    }
+    if (!order.address) {
+      result.address = "Address is required";
+    }
+    if (!order.country) {
+      result.country = "Country is required";
+    }
+    return result;
+  };
+
+  // Derived state to get the errors for the order
+  const orderErrors = getOrderErrors(order);
+  const isValid = Object.keys(orderErrors).length === 0;
+
   const renderItem = (itemInCart) => {
     const { id, sku, quantity } = itemInCart;
 
@@ -90,13 +111,15 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus(FORMSTATUS.SUBMITTING);
-    try {
-      const response = await saveShippingDetails(order);
-      console.log(response);
-      emptyCart();
-      setFormStatus(FORMSTATUS.COMPLETED);
-    } catch (e) {
-      setSaveError(e);
+    if (isValid) {
+      try {
+        const response = await saveShippingDetails(order);
+        console.log(response);
+        emptyCart();
+        setFormStatus(FORMSTATUS.COMPLETED);
+      } catch (e) {
+        setSaveError(e);
+      }
     }
   };
 
