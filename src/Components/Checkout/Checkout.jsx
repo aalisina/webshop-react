@@ -20,6 +20,7 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
   const { data: products, loading, error } = useFetchAll(prods);
   const [order, setOrder] = useState(emptyOrder);
   const [formStatus, setFormStatus] = useState(FORMSTATUS.IDLE);
+  const [touched, setTouched] = useState({});
 
   // state to handle errors for the saveShippingDetails API call
   const [saveError, setSaveError] = useState(null);
@@ -107,7 +108,11 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
 
   const handleBlur = (e) => {
     // TODO: handle blur
+    setTouched((curTouched) => {
+      return { ...curTouched, [e.target.id]: true };
+    });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus(FORMSTATUS.SUBMITTING);
