@@ -239,8 +239,12 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="invalid-feedback">
-                  Please enter your last name.
+                <div>
+                  <p role="alert" style={{ color: "red" }}>
+                    {(touched.lastName ||
+                      formStatus === FORMSTATUS.SUBMITTED) &&
+                      orderErrors.lastName}
+                  </p>
                 </div>
                 <div className="col-12">
                   <label htmlFor="address" className="form-label">
@@ -255,8 +259,12 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
                     onBlur={handleBlur}
                     onChange={handleChange}
                   />
-                  <div className="invalid-feedback">
-                    Please enter your shipping address.
+                  <div>
+                    <p role="alert" style={{ color: "red" }}>
+                      {(touched.address ||
+                        formStatus === FORMSTATUS.SUBMITTED) &&
+                        orderErrors.address}
+                    </p>
                   </div>
                 </div>
 
@@ -276,8 +284,12 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
                     <option value="Colombia">Colombia</option>
                     <option value="Mexico">Mexico</option>
                   </select>
-                  <div className="invalid-feedback">
-                    Please select a valid country.
+                  <div>
+                    <p role="alert" style={{ color: "red" }}>
+                      {(touched.country ||
+                        formStatus === FORMSTATUS.SUBMITTED) &&
+                        orderErrors.country}
+                    </p>
                   </div>
                 </div>
               </div>
