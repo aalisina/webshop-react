@@ -183,9 +183,13 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
             >
               <div className="row g-3">
                 {/* Show error summary here */}
-                {!isValid && formStatus.SUBMITTED && (
-                  <div className="col-sm-6">
-                    <div role="alert">
+                {!isValid && FORMSTATUS.SUBMITTED && (
+                  <div
+                    className="col-sm-12"
+                    role="alert"
+                    style={{ color: "red" }}
+                  >
+                    <div>
                       <p>Please fix the following errors</p>
                       <ul>
                         {Object.keys(orderErrors).map((key) => {
