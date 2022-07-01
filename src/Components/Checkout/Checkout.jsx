@@ -188,22 +188,23 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
             >
               <div className="row g-3">
                 {/* Show error summary here */}
-                {!isValid && FORMSTATUS.SUBMITTED && (
-                  <div
-                    className="col-sm-12"
-                    role="alert"
-                    style={{ color: "red" }}
-                  >
-                    <div>
-                      <p>Please fix the following errors</p>
-                      <ul>
-                        {Object.keys(orderErrors).map((key) => {
-                          return <li key={key}>{orderErrors[key]}</li>;
-                        })}
-                      </ul>
+                {(!isValid || formStatus === FORMSTATUS.SUBMITTED) &&
+                  Object.keys(touched).length > 0 && (
+                    <div
+                      className="col-sm-12"
+                      role="alert"
+                      style={{ color: "red" }}
+                    >
+                      <div>
+                        <p>Please fix the following errors</p>
+                        <ul>
+                          {Object.keys(orderErrors).map((key) => {
+                            return <li key={key}>{orderErrors[key]}</li>;
+                          })}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
                 <div className="col-sm-6">
                   <label htmlFor="firstName" className="form-label">
