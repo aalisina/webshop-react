@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function useFetchAll(urls) {
+  const prevUrlsRef = useRef([]);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,10 +24,17 @@ export default function useFetchAll(urls) {
       })
       .finally(() => setLoading(false));
     // eslint-disable-next-line
-    // if add the urls dependecy, the effect will be called every time the urls 
+    // if add the urls dependecy, the effect will be called every time the urls
     // change and will fetch the date over and over again
     // causing an infinite loop because the component is rendered over and over again
   }, []);
 
   return { data, loading, error };
 }
+
+const arraysEqual = (array1, array2) => {
+  return (
+    array1.length === array2.length &&
+    array1.every((element, index) => element === array2[index])
+  );
+};
