@@ -23,6 +23,9 @@ export default function useFetchAll(urls) {
       })
       .finally(() => setLoading(false));
     // eslint-disable-next-line
+    // if add the urls dependecy, the effect will be called every time the urls 
+    // change and will fetch the date over and over again
+    // causing an infinite loop because the component is rendered over and over again
   }, []);
 
   return { data, loading, error };
