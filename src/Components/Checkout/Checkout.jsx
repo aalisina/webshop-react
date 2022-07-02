@@ -187,7 +187,10 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
               onSubmit={handleSubmit}
             >
               <div className="row g-3">
-                {/* Show error summary here */}
+                {/* Show error summary here 
+                  TODO only show error fields that are touched, not all fields
+                */}
+
                 {(!isValid || formStatus === FORMSTATUS.SUBMITTED) &&
                   Object.keys(touched).length > 0 && (
                     <div
