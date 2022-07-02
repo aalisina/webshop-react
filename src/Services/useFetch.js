@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function useFetch(dataType) {
+  const isMountedRef = useRef(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    isMountedRef.current = true;
     const init = async () => {
       try {
         const response = await fetch(
@@ -24,6 +26,11 @@ export default function useFetch(dataType) {
       }
     };
     init();
+
+    // Any function that is returned will be called when the component is unmounted
+    return () => {
+      isMountedRef.current = false;
+    };
   }, [dataType]);
 
   return { data, error, loading };
