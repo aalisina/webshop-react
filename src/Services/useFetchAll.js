@@ -7,6 +7,9 @@ export default function useFetchAll(urls) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Only fetch if the urls have changed
+    if (arraysEqual(prevUrlsRef.current, urls)) return;
+    prevUrlsRef.current = urls;
     const promises = urls.map((url) =>
       fetch(process.env.REACT_APP_API_BASE_URL + "products/" + url).then(
         (response) => {
@@ -23,11 +26,10 @@ export default function useFetchAll(urls) {
         setError(e);
       })
       .finally(() => setLoading(false));
-    // eslint-disable-next-line
     // if add the urls dependecy, the effect will be called every time the urls
     // change and will fetch the date over and over again
     // causing an infinite loop because the component is rendered over and over again
-  }, []);
+  }, [urls]);
 
   return { data, loading, error };
 }
