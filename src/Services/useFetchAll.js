@@ -8,7 +8,10 @@ export default function useFetchAll(urls) {
 
   useEffect(() => {
     // Only fetch if the urls have changed
-    if (arraysEqual(prevUrlsRef.current, urls)) return;
+    if (arraysEqual(prevUrlsRef.current, urls)) {
+      setLoading(false);
+      return;
+    }
     prevUrlsRef.current = urls;
     const promises = urls.map((url) =>
       fetch(process.env.REACT_APP_API_BASE_URL + "products/" + url).then(
