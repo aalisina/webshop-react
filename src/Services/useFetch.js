@@ -15,14 +15,14 @@ export default function useFetch(dataType) {
         );
         if (response.ok) {
           const json = await response.json();
-          setData(json);
+          if (isMountedRef.current) setData(json);
         } else {
           throw response;
         }
       } catch (err) {
-        setError(err);
+        if (isMountedRef.current) setError(err);
       } finally {
-        setLoading(false);
+        if (isMountedRef.current) setLoading(false);
       }
     };
     init();
