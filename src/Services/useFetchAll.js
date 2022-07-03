@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
+// Getting an error when loading the cart page
+
 export default function useFetchAll(urls) {
   const prevUrlsRef = useRef([]);
   const [data, setData] = useState(null);
