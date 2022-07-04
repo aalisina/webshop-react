@@ -1,20 +1,11 @@
-import { useState, useEffect, useRef } from "react";
-
-// Getting an error when loading the cart page
+import { useState, useEffect } from "react";
 
 export default function useFetchAll(urls) {
-  const prevUrlsRef = useRef([]);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Only fetch if the urls have changed
-    if (arraysEqual(prevUrlsRef.current, urls)) {
-      setLoading(false);
-      return;
-    }
-    prevUrlsRef.current = urls;
     const promises = urls.map((url) =>
       fetch(process.env.REACT_APP_API_BASE_URL + "products/" + url).then(
         (response) => {
@@ -31,17 +22,8 @@ export default function useFetchAll(urls) {
         setError(e);
       })
       .finally(() => setLoading(false));
-    // if add the urls dependecy, the effect will be called every time the urls
-    // change and will fetch the date over and over again
-    // causing an infinite loop because the component is rendered over and over again
-  }, [urls]);
+    // eslint-disable-next-line
+  }, []);
 
   return { data, loading, error };
 }
-
-const arraysEqual = (array1, array2) => {
-  return (
-    array1.length === array2.length &&
-    array1.every((element, index) => element === array2[index])
-  );
-};
