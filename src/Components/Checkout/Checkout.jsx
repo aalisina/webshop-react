@@ -15,7 +15,7 @@ const FORMSTATUS = {
   SUBMITTING: "SUBMITTING",
   COMPLETED: "COMPLETED",
 };
-function Checkout({ cart, updateQuantity, emptyCart }) {
+function Checkout({ cart, dispatch }) {
   const prods = cart.map((i) => i.id);
   const { data: products, loading, error } = useFetchAll(prods);
   const [order, setOrder] = useState(emptyOrder);
@@ -80,7 +80,7 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
           <select
             id="quantity"
             value={quantity}
-            onChange={(e) => updateQuantity(sku, parseInt(e.target.value))}
+            onChange={(e) => dispatch({type: "updateQuantity", sku, quantity: parseInt(e.target.value)} ) }
           >
             <option value="0">Remove</option>
             <option value="1">1</option>
@@ -120,7 +120,7 @@ function Checkout({ cart, updateQuantity, emptyCart }) {
       try {
         const response = await saveShippingDetails(order);
         console.log(response);
-        emptyCart();
+        dispatch({type: "empty"});
         setFormStatus(FORMSTATUS.COMPLETED);
       } catch (e) {
         setSaveError(e);
