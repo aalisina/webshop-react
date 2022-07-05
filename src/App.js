@@ -5,19 +5,19 @@ import Footer from "./Components/Footer/Footer";
 import Details from "./Components/Details/Details";
 import Checkout from "./Components/Checkout/Checkout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import cartReducer from "./Reducers/cartReducer"
+import cartReducer from "./Reducers/cartReducer";
 
 let initialCart;
 
-  try {
-    initialCart = JSON.parse(localStorage.getItem("cart")) ?? [];
-  } catch (error) {
-    console.error("The cart could not be parsed to JSON.");
-    initialCart = [];
-  }
+try {
+  initialCart = JSON.parse(localStorage.getItem("cart")) ?? [];
+} catch (error) {
+  console.error("The cart could not be parsed to JSON.");
+  initialCart = [];
+}
 
 function App() {
-  const [cart, dispatch] = useReducer(cartReducer, initialCart)
+  const [cart, dispatch] = useReducer(cartReducer, initialCart);
 
   useEffect(() => localStorage.setItem("cart", JSON.stringify(cart)), [cart]);
 
@@ -37,12 +37,7 @@ function App() {
           />
           <Route
             path="cart"
-            element={
-              <Checkout
-                cart={cart}
-                dispatch={dispatch}
-              />
-            }
+            element={<Checkout cart={cart} dispatch={dispatch} />}
           />
         </Routes>
         <Footer />

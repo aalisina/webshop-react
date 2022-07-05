@@ -37,7 +37,7 @@ function Details(props) {
               <div className="d-grid gap-2 d-md-flex justify-content-md-start">
                 <button
                   onClick={() => {
-                    props.dispatch({type: "add", id, sku});
+                    props.dispatch({ type: "add", id, sku });
                     navigate("/cart");
                   }}
                   type="button"

@@ -80,7 +80,13 @@ function Checkout({ cart, dispatch }) {
           <select
             id="quantity"
             value={quantity}
-            onChange={(e) => dispatch({type: "updateQuantity", sku, quantity: parseInt(e.target.value)} ) }
+            onChange={(e) =>
+              dispatch({
+                type: "updateQuantity",
+                sku,
+                quantity: parseInt(e.target.value),
+              })
+            }
           >
             <option value="0">Remove</option>
             <option value="1">1</option>
@@ -120,7 +126,7 @@ function Checkout({ cart, dispatch }) {
       try {
         const response = await saveShippingDetails(order);
         console.log(response);
-        dispatch({type: "empty"});
+        dispatch({ type: "empty" });
         setFormStatus(FORMSTATUS.COMPLETED);
       } catch (e) {
         setSaveError(e);
