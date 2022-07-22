@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useContext } from "react";
 import cartReducer from "../Reducers/cartReducer";
 
 
@@ -27,4 +27,16 @@ export function CartProvider(props) {
       </CartContext.Provider>
     )
 
+}
+
+// We can declare a custom hook here to make it easier for the context to be consumed.
+
+// BENEFITS:
+// It will be easier to consume the context
+// We can stop exporting the raw context so we can throw helpful errors if the provider is missing 
+ 
+export function useCart() {
+  // We will hold the value within a variable called context
+  const context = useContext(CartContext);
+  return context
 }
