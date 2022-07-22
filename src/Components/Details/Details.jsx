@@ -4,12 +4,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../../Services/useFetch";
 import Spinner from "../Spinner/Spinner";
 import PageNotFound from "../PageNotFound/PageNotFound";
+import { useCart } from "../../Contexts/cartContext"
 
-function Details(props) {
+function Details() {
   const { datatype, id } = useParams();
   const { data: product, loading, error } = useFetch(`${datatype}/${id}`);
   const [sku, setSku] = useState("");
   const navigate = useNavigate();
+  const { dispatch } = useCart();
 
   if (loading) return <Spinner />;
   if (Object.keys(product).length === 0) return <PageNotFound />;
@@ -37,7 +39,7 @@ function Details(props) {
               <div className="d-grid gap-2 d-md-flex justify-content-md-start">
                 <button
                   onClick={() => {
-                    props.dispatch({ type: "add", id, sku });
+                    dispatch({ type: "add", id, sku });
                     navigate("/cart");
                   }}
                   type="button"
