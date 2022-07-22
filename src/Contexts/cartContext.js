@@ -17,5 +17,6 @@ try {
 }
 export function CartProvider(props) {
     const [cart, dispatch] = useReducer(cartReducer, initialCart);
+    useEffect(() => localStorage.setItem("cart", JSON.stringify(cart)), [cart]);
     return (<CartContext.Provider>{props.children}<CartContext.Provider/>)
 }

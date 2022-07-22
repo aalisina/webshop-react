@@ -11,8 +11,6 @@ import { CartContext } from "./Contexts/cartContext";
 
 function App() {
 
-  useEffect(() => localStorage.setItem("cart", JSON.stringify(cart)), [cart]);
-
   return (
     // The provider determines which states and functions are shared via the context 
     // The provider accepts one prop which is the value prop which determines what will be shared 
