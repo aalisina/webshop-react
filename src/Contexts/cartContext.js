@@ -16,7 +16,13 @@ try {
   initialCart = [];
 }
 export function CartProvider(props) {
+    
     const [cart, dispatch] = useReducer(cartReducer, initialCart);
     useEffect(() => localStorage.setItem("cart", JSON.stringify(cart)), [cart]);
-    return (<CartContext.Provider>{props.children}<CartContext.Provider/>)
+    const contextValue = {cart, dispatch};
+    
+    return <CartContext.Provider value={contextValue}>
+              {props.children}
+            <CartContext.Provider />
+
 }
