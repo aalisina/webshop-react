@@ -11,11 +11,6 @@ import { CartContext } from "./Contexts/cartContext";
 function App() {
 
   return (
-    // The provider determines which states and functions are shared via the context 
-    // The provider accepts one prop which is the value prop which determines what will be shared 
-    // via the context, we can pass it down as an object. These values can be consumed using the 
-    // CartContext
-    <CartContext.Provider value={{cart, dispatch}}>
       <div className="App">
         <BrowserRouter>
           <Navigation cart={cart} />
@@ -37,7 +32,7 @@ function App() {
           <Footer />
         </BrowserRouter>
       </div>
-    </CartContext.Provider>
+
   );
 }
 
