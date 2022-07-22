@@ -11,7 +11,7 @@ function App() {
   return (
       <div className="App">
         <BrowserRouter>
-          <Navigation cart={cart} />
+          <Navigation />
           <Routes>
             <Route
             path="/"
@@ -20,7 +20,7 @@ function App() {
             <Route path="/:datatype" element={<Home />} />
             <Route
             path="/:datatype/:id"
-            element={<Details dispatch={dispatch} />}
+            element={<Details />}
             />
             <Route
             path="cart"
