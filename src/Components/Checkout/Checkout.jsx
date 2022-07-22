@@ -16,7 +16,10 @@ const FORMSTATUS = {
   SUBMITTING: "SUBMITTING",
   COMPLETED: "COMPLETED",
 };
-function Checkout({ cart, dispatch }) {
+function Checkout() {
+
+  // The useContext hook allows us to consume a context
+  const { cart, dispatch } = useContext(CartContext);
   const prods = cart.map((i) => i.id);
   const { data: products, loading, error } = useFetchAll(prods);
   const [order, setOrder] = useState(emptyOrder);
