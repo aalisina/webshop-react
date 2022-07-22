@@ -5,7 +5,7 @@ import cartReducer from "../Reducers/cartReducer";
 // Possible to pass a default value as a parameter: React.createContext(param)
 // The default value applies when a component tries to consume the context without being nested under
 // a provider 
-export const CartContext = React.createContext(null);
+const CartContext = React.createContext(null);
 
 let initialCart;
 
@@ -34,7 +34,7 @@ export function CartProvider(props) {
 // BENEFITS:
 // It will be easier to consume the context
 // We can stop exporting the raw context so we can throw helpful errors if the provider is missing 
- 
+
 export function useCart() {
   // We will hold the value within a variable called context
   const context = useContext(CartContext);
