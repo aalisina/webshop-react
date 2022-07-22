@@ -43,7 +43,7 @@ function App() {
             />
             <Route
             path="cart"
-            element={<Checkout cart={cart} dispatch={dispatch} />}
+            element={<Checkout />}
             />
           </Routes>
           <Footer />
