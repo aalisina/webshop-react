@@ -1,11 +1,10 @@
-import React, { useReducer, useEffect } from "react";
+import React from "react";
 import Navigation from "./Components/Navigation/Navigation";
 import Home from "./Components/Home/Home";
 import Footer from "./Components/Footer/Footer";
 import Details from "./Components/Details/Details";
 import Checkout from "./Components/Checkout/Checkout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import cartReducer from "./Reducers/cartReducer";
 import { CartContext } from "./Contexts/cartContext";
 
 
