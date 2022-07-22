@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import useFetchAll from "../../Services/useFetchAll";
 import Spinner from "../../Components/Spinner/Spinner";
 import { saveShippingDetails } from "../../Services/orderService";
-import { CartContext } from "../../Contexts/cartContext"
+import { useCart } from "../../Contexts/cartContext"
 
 const emptyOrder = {
   firstName: "",
@@ -18,8 +18,8 @@ const FORMSTATUS = {
 };
 function Checkout() {
 
-  // The useContext hook allows us to consume a context
-  const { cart, dispatch } = useContext(CartContext);
+  // useCart doesn't accept any arguments because it's already configured with the proper context
+  const { cart, dispatch } = useCart();
   const prods = cart.map((i) => i.id);
   const { data: products, loading, error } = useFetchAll(prods);
   const [order, setOrder] = useState(emptyOrder);
