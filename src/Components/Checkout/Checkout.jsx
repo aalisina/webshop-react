@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import useFetchAll from "../../Services/useFetchAll";
 import Spinner from "../../Components/Spinner/Spinner";
 import { saveShippingDetails } from "../../Services/orderService";
+import { CartContext } from "../../Contexts/cartContext"
 
 const emptyOrder = {
   firstName: "",
